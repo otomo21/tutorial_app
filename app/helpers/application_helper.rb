@@ -1,5 +1,4 @@
 module ApplicationHelper
-  module ApplicationHelper
   
   def full_title(page_title = "")
     base_title = "勤怠管理システム"
