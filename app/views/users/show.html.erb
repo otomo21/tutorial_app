@@ -48,7 +48,14 @@
       <% @dates.each do |day| %>
         <tr>
           <td><%= day.worked_on.to_s(:date) %></td>
-          <td><%= %w{日 月 火 水 木 金 土}[day.worked_on.wday] %></td>
+          <% day_of_the_week = %w{日 月 火 水 木 金 土}[day.worked_on.wday] %>
+            <% if day_of_the_week == "日" %>
+              <td><font color="red"><%=day_of_the_week %></font></td>
+            <% elsif day_of_the_week == "土" %>
+              <td><font color="blue"><%=day_of_the_week %></font></td>
+            <% else %>  
+              <td><%=day_of_the_week %></td>
+            <% end %>
           <td><%= day.started_at.to_s(:hour) if day.started_at.present? %></td>
           <td><%= day.started_at.to_s(:min) if day.started_at.present? %></td>
           <td>
